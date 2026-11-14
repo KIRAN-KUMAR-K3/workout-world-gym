@@ -7,16 +7,18 @@ import Reveal from '@/components/Reveal';
 import { gallerySlots } from '@/data/content';
 import { lockScroll } from '@/lib/scroll';
 
-/** Bento layout: how many columns/rows each tile spans. */
+/**
+ * Bento layout: how many columns/rows each tile spans. Seven tiles fill a
+ * 4-column grid exactly (3 rows): [2x2][1][tall] / [2x2][1][tall] / [wide][1][1].
+ */
 const SPANS = [
   'col-span-2 row-span-2',
   '',
   'row-span-2',
   '',
   'col-span-2',
-  'row-span-2',
-  'row-span-2',
-  'col-span-2',
+  '',
+  '',
 ];
 
 export default function Gallery() {
@@ -61,7 +63,7 @@ export default function Gallery() {
       <div className="container-px">
         <SectionHeading
           title="The iron atmosphere"
-          description="The kind of training that happens here every day. Select any picture to see it larger."
+          description="Deepak Kaverappa on the Workout World floor — the standard every member trains to. Select any picture to see it larger."
         />
 
         <div className="mt-14 grid auto-rows-[150px] grid-flow-dense grid-cols-2 gap-3 sm:auto-rows-[190px] lg:grid-cols-4 lg:auto-rows-[210px]">
@@ -76,7 +78,7 @@ export default function Gallery() {
                 <div className="h-full w-full grayscale transition-all duration-700 group-hover:scale-110 group-hover:grayscale-0 group-focus-visible:grayscale-0">
                   <SmartImage
                     src={slot.image}
-                    alt={slot.label}
+                    alt={slot.alt}
                     placeholderLabel={slot.label}
                   />
                 </div>
@@ -97,7 +99,7 @@ export default function Gallery() {
           ))}
         </div>
         <p className="mt-8 text-sm text-ink-muted/70">
-          Images are representative. Drop by to see Workout World Gym for yourself.
+          Drop by to see the floor for yourself — we are happy to show you around.
         </p>
       </div>
 
@@ -156,9 +158,10 @@ export default function Gallery() {
             >
               <SmartImage
                 src={active.image}
-                alt={active.label}
+                alt={active.alt}
                 placeholderLabel={active.label}
                 eager
+                fit="contain"
               />
             </motion.div>
           </motion.div>

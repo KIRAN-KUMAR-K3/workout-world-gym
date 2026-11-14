@@ -24,6 +24,11 @@ to `index.html` as a `<meta>` tag for hosts that ignore `_headers`.
 | `Permissions-Policy` | Camera, microphone, location, payment and similar features are switched off. |
 | `Cross-Origin-Opener-Policy` | Pages opened from the site get no handle back to it. |
 
+**Photos**
+
+- The gym's own photographs in `public/images/` were re-encoded to WebP with all metadata removed (no EXIF, GPS, device or timestamp data is published).
+- Images are only ever loaded from this site, the inline grain texture, or `images.pexels.com` (CSP `img-src`); `safeMediaUrl()` rejects any other address.
+
 **Code**
 
 - No `dangerouslySetInnerHTML`, `innerHTML`, `eval` or inline event handlers anywhere.

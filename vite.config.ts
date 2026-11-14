@@ -6,6 +6,7 @@ import {
   buildHeadersFile,
   cspMeta,
   cspPreview,
+  imageHeaders,
   securityHeaders,
 } from './security-headers';
 
@@ -57,6 +58,9 @@ function securityHeadersPlugin(): Plugin {
         // HSTS is meaningless (and unhelpful) on http://localhost
         delete headers['Strict-Transport-Security'];
         if (req.url?.startsWith('/assets/')) Object.assign(headers, assetHeaders);
+        if (req.url?.startsWith('/images/') || req.url === '/og-image.jpg') {
+          Object.assign(headers, imageHeaders);
+        }
         for (const [name, value] of Object.entries(headers)) {
           res.setHeader(name, value);
         }

@@ -1,6 +1,6 @@
 import Reveal from '@/components/Reveal';
 import SmartImage from '@/components/SmartImage';
-import { Instagram } from 'lucide-react';
+import { Instagram, Trophy } from 'lucide-react';
 import {
   contact,
   externalLinkProps,
@@ -8,6 +8,7 @@ import {
   owner,
   ownerPhoto,
 } from '@/config/siteConfig';
+import { media } from '@/config/media';
 
 export default function Founder() {
   return (
@@ -34,7 +35,7 @@ export default function Founder() {
                 <SmartImage
                   src={ownerPhoto}
                   placeholderLabel={owner.name}
-                  alt={`${owner.name}, founder of Workout World Gym, pressing dumbbells overhead`}
+                  alt={`${owner.name}, founder of Workout World Gym, performing a cable crossover on the gym floor`}
                 />
               ) : (
                 /* Designed monogram shown when no photo is configured */
@@ -87,7 +88,45 @@ export default function Founder() {
               member train with purpose.
             </p>
           </Reveal>
+
+          {/* Competition titles */}
+          <Reveal delay={0.09}>
+            <ul
+              className="mt-7 flex flex-wrap gap-2"
+              aria-label="Competition titles"
+            >
+              {owner.titles.map((title) => (
+                <li
+                  key={title}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-line bg-bg-soft px-3.5 py-1.5 text-sm font-medium text-ink"
+                >
+                  <Trophy className="h-3.5 w-3.5 text-accent" aria-hidden />
+                  {title}
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          {/* Competition moments */}
           <Reveal delay={0.12}>
+            <ul className="mt-7 grid grid-cols-3 gap-3">
+              {media.founder.moments.map((m) => (
+                <li
+                  key={m.src}
+                  className="group relative aspect-[4/5] overflow-hidden rounded-2xl border border-line"
+                >
+                  <SmartImage src={m.src} alt={m.alt} placeholderLabel={m.label} />
+                  <span
+                    className="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-bg/90 to-transparent px-3 pb-2.5 pt-8 text-xs font-medium text-ink"
+                  >
+                    {m.label}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+
+          <Reveal delay={0.15}>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href={registrationFormUrl}

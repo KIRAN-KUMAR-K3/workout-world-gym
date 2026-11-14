@@ -118,7 +118,7 @@ All **Join Now / Register / Membership Enquiry** buttons read from a single valu
 
 ```ts
 // src/config/siteConfig.ts
-export const registrationFormUrl = 'https://docs.google.com/forms/d/e/XXXX/viewform';
+export const registrationFormUrl = safeLink('https://docs.google.com/forms/d/e/XXXX/viewform');
 ```
 
 Every button opens it in a new tab with `target="_blank"` and `rel="noopener noreferrer"`. No URL is duplicated anywhere else.
@@ -131,20 +131,36 @@ Every button opens it in a new tab with `target="_blank"` and `rel="noopener nor
 
 Every photo and the background video are defined in **one file: `src/config/media.ts`**.
 
-The site currently uses **free-licensed stock photos and one stock video from [Pexels](https://www.pexels.com/license/)** (free for commercial use, no attribution required). They are loaded from the Pexels CDN and are **representative images — not photographs of Workout World Gym itself** (the Equipment and Gallery sections say so in a small caption).
+**Real photographs (Founder, About, Services, Gallery, final banner)**
+Fourteen photographs of Deepak Kaverappa supplied by the gym live in `public/images/` as WebP files (metadata stripped, each under 90 KB). `media.ts` maps them to the slots:
+
+| Slot | File |
+|---|---|
+| Founder main photo | `deepak-cable-crossover-wide.webp` |
+| Founder "moments" strip | `deepak-stage.webp`, `deepak-trophy.webp`, `deepak-artwork.webp` |
+| About | `deepak-portrait-red.webp` |
+| Services | `deepak-back-pose.webp` |
+| Final call-to-action backdrop | `deepak-double-biceps.webp` |
+| Gallery (7 tiles) | `deepak-cable-crossover`, `-between-sets`, `-outdoors`, `-barbell-curl`, `-dumbbell-rack`, `-dumbbell-curl`, `-overhead-press` |
+
+The gallery layout is a 7-tile grid (`SPANS` in `src/sections/Gallery.tsx`). If you add or remove gallery photos, adjust that array so the tiles still fill the rows.
+
+**Stock media that remains**
+The 14 Equipment tiles and the three training clips are still **free-licensed stock from [Pexels](https://www.pexels.com/license/)** (free for commercial use, no attribution required), loaded from the Pexels CDN. The Equipment section carries a small "representative" caption until you replace them.
 
 **To use your own photo for any slot**
-1. Put the file in `public/images/` (use `.webp` or an optimised `.jpg`, ~1600px wide, under ~300 KB).
+1. Put the file in `public/images/` (use `.webp`, ~1400px wide, under ~150 KB; strip EXIF/location data first).
 2. In `src/config/media.ts`, replace that slot's line with the local path, e.g.
    ```ts
    latPulldown: '/images/lat-pulldown.webp',
    ```
-3. Once the Equipment / Gallery photos are your own, delete the "Images are representative" caption in `src/sections/Equipment.tsx` and `src/sections/Gallery.tsx`.
+3. Once the Equipment photos are your own, delete the "Images are representative" caption in `src/sections/Equipment.tsx`.
+4. Give a replaced photo a **new file name** — photos are cached by browsers for 30 days.
 
-**Founder photo (Deepak Kaverappa)**
-The founder section uses `public/images/deepak-kaverappa.jpg`. It was cropped from a promotional poster (the supplement-store logo and text were cropped out) and is only 760px wide, so it is slightly soft on large screens. For the sharpest result, replace that file with an original high-resolution photo (landscape, about 1600×1000) using the same file name — or change the path in `src/config/siteConfig.ts` → `ownerPhoto`. If `ownerPhoto` is set to `undefined`, a "DK" monogram is shown instead.
+**Founder titles**
+The chips under the founder text come from `owner.titles` in `src/config/siteConfig.ts` (Mr. Universe (IFBF), Mr. India, Mr. Karnataka, Mr. Dasara — as printed on the gym's signage). Edit that list to change them.
 
-**Looping training clips & background video**
+**Videos**
 `media.reels` (the "Press. Pull. Lift." section) and `media.video` (the full-width band) in the same file. These are free Pexels clips used GIF-style: muted, looping, only loaded when scrolled into view, and skipped for reduced-motion users. To self-host, put an `.mp4` in `public/` and point `src` at it.
 
 If an image ever fails to load, a neutral placeholder is shown automatically, so the layout never breaks.
@@ -210,7 +226,7 @@ One-time admission fee: **₹500** (first-time joiners only).
 ```
 workout-world-gym/
 ├─ public/
-│  ├─ images/            # your gym photos go here (equipment/, gallery/)
+│  ├─ images/            # the gym's own photos (WebP, metadata stripped)
 │  ├─ favicon.svg
 │  ├─ og-image.jpg       # social share image
 │  ├─ robots.txt
@@ -251,8 +267,8 @@ This site intentionally contains **only verified information**:
 - No invented discounts, student/couple prices or special packages — these are shown as "discuss at the gym" with a **Visit Our Gym** button to Google Maps.
 - No invented personal-training prices, trainer certifications, nutritionist qualifications or guaranteed results.
 - No email address is shown (none was provided).
-- Equipment is listed from the gym's confirmed inventory. Photos are free-licensed representative stock images (Pexels), captioned as such; replace them with real photos as described above.
-- The founder section uses Deepak Kaverappa's own photo (supplied by the gym), never a stock photo of another person.
+- Equipment is listed from the gym's confirmed inventory. Equipment tile photos are free-licensed representative stock images (Pexels), captioned as such; replace them with real photos as described above.
+- Founder, About, Services, Gallery and the final banner use Deepak Kaverappa's own photographs (supplied by the gym), never stock photos of another person.
 
 ---
 

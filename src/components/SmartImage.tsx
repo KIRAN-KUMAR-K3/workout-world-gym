@@ -17,6 +17,8 @@ interface SmartImageProps {
    * returns when the nearest `.group` is hovered.
    */
   grade?: boolean;
+  /** `cover` (default) fills the frame; `contain` shows the whole photo. */
+  fit?: 'cover' | 'contain';
 }
 
 /** Lazy-loaded image with a skeleton loader and a graceful fallback. */
@@ -27,6 +29,7 @@ export default function SmartImage({
   placeholderLabel,
   eager = false,
   grade = false,
+  fit = 'cover',
 }: SmartImageProps) {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
@@ -54,7 +57,7 @@ export default function SmartImage({
             decoding="async"
             onLoad={() => setLoaded(true)}
             onError={() => setErrored(true)}
-            className={`h-full w-full object-cover transition-opacity duration-700 ${
+            className={`h-full w-full ${fit === 'contain' ? 'object-contain' : 'object-cover'} transition-opacity duration-700 ${
               loaded ? 'opacity-100' : 'opacity-0'
             } ${grade ? 'photo-grade' : ''} ${className}`}
           />

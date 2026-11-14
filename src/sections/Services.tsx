@@ -41,8 +41,8 @@ export default function Services() {
             <SmartImage
               src={media.services}
               grade
-              placeholderLabel="Personal training"
-              alt="Personal trainer guiding members through a session"
+              placeholderLabel="Deepak Kaverappa"
+              alt="Deepak Kaverappa holding a rear double-biceps pose on the gym floor"
             />
           </div>
         </Reveal>

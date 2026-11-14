@@ -17,6 +17,7 @@
  */
 
 import { safeLink } from '@/lib/safeUrl';
+import { media } from '@/config/media';
 
 /* ------------------------------------------------------------------ */
 /*  Site / brand                                                       */
@@ -63,9 +64,7 @@ export const contact = {
   ),
   /** Google Maps location + directions */
   mapsHref: safeLink('https://maps.app.goo.gl/vDCnT9VAuu1QdVuB7'),
-  instagramHref: safeLink(
-    'https://www.instagram.com/deepakkaverappa?psln=MW56ZTJlN211YWYwZA==',
-  ),
+  instagramHref: safeLink('https://www.instagram.com/deepakkaverappa/'),
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -88,16 +87,17 @@ export const externalLinkProps = {
 
 /* ------------------------------------------------------------------ */
 /*  Founder / owner                                                    */
-/*  Add Deepak's real photo to public/images/ and set the path below,  */
-/*  e.g. ownerPhoto = '/images/deepak-kaverappa.webp'                  */
+/*  Photos live in public/images/ and are mapped in src/config/media.ts */
 /* ------------------------------------------------------------------ */
 export const owner = {
   name: 'Deepak Kaverappa',
-  role: 'Founder and international bodybuilder',
+  role: 'Founder · International bodybuilder (IFBF)',
+  /** Competition titles, as printed on the gym's own signage. */
+  titles: ['Mr. Universe (IFBF)', 'Mr. India', 'Mr. Karnataka', 'Mr. Dasara'],
 } as const;
 
-/** Set to the photo path once added; leave undefined to show a placeholder. */
-export const ownerPhoto: string | undefined = '/images/deepak-kaverappa.jpg';
+/** Main founder photo. Leave undefined to show the "DK" monogram instead. */
+export const ownerPhoto: string | undefined = media.founder.main;
 
 /* ------------------------------------------------------------------ */
 /*  Colour theme                                                       */

@@ -52,8 +52,9 @@ export default function About() {
             <SmartImage
               src={media.about}
               grade
-              placeholderLabel="Gym floor"
-              alt="Dimly lit gym floor with rows of strength machines"
+              className="object-top"
+              placeholderLabel="Deepak Kaverappa"
+              alt="Deepak Kaverappa in a red vest on the Workout World Gym floor"
             />
           </div>
         </Reveal>

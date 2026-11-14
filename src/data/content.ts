@@ -101,21 +101,17 @@ export const whyChoose: Feature[] = [
   },
 ];
 
-/* Gallery — representative images from src/config/media.ts.
-   Swap them for real gym photographs there. */
+/* Gallery — real photographs, defined in src/config/media.ts */
 export interface GallerySlot {
   id: string;
   label: string;
+  alt: string;
   image?: string;
 }
 
-export const gallerySlots: GallerySlot[] = [
-  { id: 'g1', label: 'Strength floor', image: media.gallery[0] },
-  { id: 'g2', label: 'Machines & free weights', image: media.gallery[1] },
-  { id: 'g3', label: 'Training zone', image: media.gallery[2] },
-  { id: 'g4', label: 'Barbell station', image: media.gallery[3] },
-  { id: 'g5', label: 'Machine area', image: media.gallery[4] },
-  { id: 'g6', label: 'Dumbbell work', image: media.gallery[5] },
-  { id: 'g7', label: 'Racks & plates', image: media.gallery[6] },
-  { id: 'g8', label: 'Heavy lifting', image: media.gallery[7] },
-];
+export const gallerySlots: GallerySlot[] = media.gallery.map((g, i) => ({
+  id: `g${i + 1}`,
+  label: g.label,
+  alt: g.alt,
+  image: g.src,
+}));

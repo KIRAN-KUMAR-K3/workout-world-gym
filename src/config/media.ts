@@ -2,11 +2,14 @@
  * =============================================================================
  *  MEDIA — every photo and video used on the site, in one place
  * =============================================================================
- *  These are free-to-use stock photos/videos from Pexels (pexels.com/license —
- *  free for commercial use, no attribution required). They are REPRESENTATIVE
- *  images, not photographs of Workout World Gym itself.
+ *  Real photographs of Deepak Kaverappa live in  public/images/  (WebP,
+ *  metadata stripped) and are referenced below as site-relative paths.
  *
- *  TO USE YOUR OWN PHOTOS:
+ *  The equipment tiles and the training clips are still free-to-use stock
+ *  media from Pexels (pexels.com/license — free for commercial use, no
+ *  attribution required). They are REPRESENTATIVE, not shot at the gym.
+ *
+ *  TO REPLACE ANY OF THEM WITH YOUR OWN PHOTO:
  *    1. Put the file in  public/images/   (e.g. public/images/lat-pulldown.webp)
  *    2. Replace the matching line below with the local path, e.g.
  *         latPulldown: '/images/lat-pulldown.webp',
@@ -55,36 +58,72 @@ export const media = {
     900,
   ),
 
-  /* ---------------- Section imagery ---------------- */
-  about: px(
-    '29392546/pexels-photo-29392546/free-photo-of-dimly-lit-modern-gym-with-equipment-reflection.jpeg',
-    1200,
-  ),
-  services: px('7444444/pexels-photo-7444444.jpeg', 1200),
-  finalCta: px('6389516/pexels-photo-6389516.jpeg', 1920),
+  /* ---------------- Section imagery (real photos) ---------------- */
+  about: '/images/deepak-portrait-red.webp',
+  services: '/images/deepak-back-pose.webp',
+  finalCta: '/images/deepak-double-biceps.webp',
 
-  /* ---------------- Gallery ---------------- */
+  /* ---------------- Founder ---------------- */
+  founder: {
+    /** Main portrait in the founder section (16:10 frame). */
+    main: '/images/deepak-cable-crossover-wide.webp',
+    /** Competition moments shown as a strip under the founder text. */
+    moments: [
+      {
+        src: '/images/deepak-stage.webp',
+        alt: 'Deepak Kaverappa posing on a bodybuilding competition stage',
+        label: 'On stage',
+      },
+      {
+        src: '/images/deepak-trophy.webp',
+        alt: 'Deepak Kaverappa smiling with a trophy and garland after a win',
+        label: 'Title win',
+      },
+      {
+        src: '/images/deepak-artwork.webp',
+        alt: 'Illustrated artwork of Deepak Kaverappa performing a cable crossover',
+        label: 'Signature',
+      },
+    ],
+  },
+
+  /* ---------------- Gallery (real photos) ---------------- */
   gallery: [
-    px('4753890/pexels-photo-4753890.jpeg', 1400),
-    px('9545914/pexels-photo-9545914.jpeg', 1400),
-    px(
-      '29526371/pexels-photo-29526371/free-photo-of-modern-well-equipped-gym-with-diverse-fitness-equipment.jpeg',
-      1400,
-    ),
-    px('1552252/pexels-photo-1552252.jpeg', 1400),
-    px(
-      '40371847/pexels-photo-40371847/free-photo-of-modern-gym-with-advanced-fitness-equipment.jpeg',
-      1400,
-    ),
-    px('7690454/pexels-photo-7690454.jpeg', 1400),
-    px(
-      '19025671/pexels-photo-19025671/free-photo-of-a-gym-with-a-rack-of-weights-and-barbells.jpeg',
-      1400,
-    ),
-    px(
-      '35306856/pexels-photo-35306856/free-photo-of-close-up-of-barbell-on-gym-floor.jpeg',
-      1400,
-    ),
+    {
+      src: '/images/deepak-cable-crossover.webp',
+      label: 'Cable crossover',
+      alt: 'Deepak Kaverappa performing a cable crossover on the gym floor',
+    },
+    {
+      src: '/images/deepak-between-sets.webp',
+      label: 'Between sets',
+      alt: 'Deepak Kaverappa resting on the dumbbell rack between sets',
+    },
+    {
+      src: '/images/deepak-outdoors.webp',
+      label: 'Off the floor',
+      alt: 'Deepak Kaverappa in a vest and sunglasses outside the gym',
+    },
+    {
+      src: '/images/deepak-barbell-curl.webp',
+      label: 'Barbell curls',
+      alt: 'Deepak Kaverappa curling an EZ bar under red light',
+    },
+    {
+      src: '/images/deepak-dumbbell-rack.webp',
+      label: 'The rack',
+      alt: 'Deepak Kaverappa seated among rows of dumbbells',
+    },
+    {
+      src: '/images/deepak-dumbbell-curl.webp',
+      label: 'Dumbbell work',
+      alt: 'Deepak Kaverappa curling a heavy dumbbell',
+    },
+    {
+      src: '/images/deepak-overhead-press.webp',
+      label: 'Overhead press',
+      alt: 'Deepak Kaverappa pressing two dumbbells overhead',
+    },
   ],
 
   /* ---------------- Looping training clips ("Press. Pull. Lift.") ------- */

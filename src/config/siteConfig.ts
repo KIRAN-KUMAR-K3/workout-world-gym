@@ -34,14 +34,14 @@ export const site = {
 /*  Address                                                            */
 /* ------------------------------------------------------------------ */
 export const address = {
-  line1: '#21 GNR Complex, 1st Floor',
+  line1: '#23 GNR Complex, 1st Floor',
   line2: 'M.S. Ramaiah Bus Stop, Mathikere',
   city: 'Bengaluru',
   pincode: '560054',
   state: 'Karnataka',
   country: 'India',
   /** Full one-line address for display / structured data */
-  full: '#21 GNR Complex, 1st Floor, M.S. Ramaiah Bus Stop, Mathikere, Bengaluru – 560054, Karnataka, India',
+  full: '#23 GNR Complex, 1st Floor, M.S. Ramaiah Bus Stop, Mathikere, Bengaluru – 560054, Karnataka, India',
 } as const;
 
 /* ------------------------------------------------------------------ */
@@ -73,7 +73,7 @@ export const contact = {
 /*  Used by every JOIN NOW / REGISTER / MEMBERSHIP ENQUIRY button.     */
 /* ------------------------------------------------------------------ */
 export const registrationFormUrl = safeLink(
-  'https://docs.google.com/forms/d/e/1FAIpQLSfc2CQHpKGXCMWnfbRhFKFjesEHZ7irU9YzdamLEo_zXfWIzg/viewform?usp=publish-editor',
+  'https://docs.google.com/forms/d/e/1FAIpQLSfqqR0F8KQCd3UdDBH01BSheaZLr8QrjIcqEVfDTJd1B7ZcHg/viewform',
 );
 
 /**
